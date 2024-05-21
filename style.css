@@ -1,0 +1,104 @@
+
+* {
+    box-sizing: border-box;
+    background-color: #222;
+    padding: 0;
+    margin: 0;
+    
+  }
+
+
+  .contenedor{
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+
+  }
+
+  h1{
+  margin-top: 50px;
+    height: 40px;
+    width: audo;
+    padding: 5px;
+  
+  }
+
+
+
+.contenedor .juego{
+  display: flex;
+margin-top: 80px;
+ background-color: #fff;
+ height: 70%;
+width: 70%;
+border-radius: 15px;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}  
+
+picture{
+background-color: #fff;
+}
+
+h3{
+background-color: #fff;
+margin-bottom: 20px;
+}
+
+span{
+  background-color: #fff;
+}
+
+picture img{
+  position: fixed;
+  left: 46%;
+  top: 30%;
+  margin-bottom: 70px;
+  background-color: #fff;
+  width: 100px;
+  height: 100px;
+
+}
+
+.palabra{
+  background-color: #fff;
+
+  margin-bottom: 30px;
+
+
+
+}
+
+
+.Letras{
+
+  padding: 3px;
+  width: 65%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px black;
+
+
+}
+
+.letra {
+
+  cursor: pointer;
+
+  
+
+ color: #fff;
+  font-size: 20px;
+  margin: 10px;
+}
+
+
+
+
+ 
