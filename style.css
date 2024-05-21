@@ -27,6 +27,11 @@
 
 
 
+  .palabra{
+
+    color: #222;
+  }
+
 .contenedor .juego{
   display: flex;
 margin-top: 80px;

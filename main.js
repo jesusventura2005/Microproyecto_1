@@ -11,10 +11,16 @@ var botones = document.getElementById("letra");
 function generaPalabra() {
 
   rand = palabras[Math.floor(Math.random() * palabras.length)];
-  palabra = rand.toUpperCase();
-  console.log(palabra);
+  palabrita = rand.toUpperCase();
+  document.getElementById("palabra").innerHTML=palabrita;
+  
 
 }
+
+
+
+
+
 
 
 function intento(letra){
@@ -39,6 +45,9 @@ function intento(letra){
 
 }
 
+
+
+window.onload = generaPalabra()
 
 
 
