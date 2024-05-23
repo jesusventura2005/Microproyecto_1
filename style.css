@@ -1,63 +1,55 @@
-
 * {
-    box-sizing: border-box;
-    background-color: #222;
-    padding: 0;
-    margin: 0;
-    
-  }
+  box-sizing: border-box;
+  background-color: #222;
+  padding: 0;
+  margin: 0;
+}
 
-
-  .contenedor{
-    display: flex;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    flex-direction: column;
-
-  }
-
-  h1{
-  margin-top: 50px;
-    height: 40px;
-    width: audo;
-    padding: 5px;
-  
-  }
-
-
-
-  .palabra{
-
-    color: #222;
-  }
-
-.contenedor .juego{
+.contenedor {
   display: flex;
-margin-top: 80px;
- background-color: #fff;
- height: 70%;
-width: 70%;
-border-radius: 15px;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-}  
-
-picture{
-background-color: #fff;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
 }
 
-h3{
-background-color: #fff;
-margin-bottom: 20px;
+h1 {
+  margin-top: 50px;
+  height: 40px;
+  width: audo;
+  padding: 5px;
 }
 
-span{
+.palabra {
+  color: #222;
+}
+
+.contenedor .juego {
+  display: flex;
+  margin-top: 80px;
+  background-color: #fff;
+  height: 70%;
+  width: 70%;
+  border-radius: 15px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+picture {
   background-color: #fff;
 }
 
-picture img{
+h3 {
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+
+span {
+  background-color: #fff;
+}
+
+picture img {
   position: fixed;
   left: 46%;
   top: 30%;
@@ -65,21 +57,15 @@ picture img{
   background-color: #fff;
   width: 100px;
   height: 100px;
-
 }
 
-.palabra{
+.palabra {
   background-color: #fff;
 
   margin-bottom: 30px;
-
-
-
 }
 
-
-.letras{
-
+.letras {
   padding: 3px;
   width: 65%;
   display: flex;
@@ -88,22 +74,12 @@ picture img{
   flex-wrap: wrap;
   border-radius: 15px;
   box-shadow: 5px 5px 5px black;
-
-
 }
 
 .letra {
-
   cursor: pointer;
 
-  
-
- color: #fff;
+  color: #fff;
   font-size: 20px;
   margin: 10px;
 }
-
-
-
-
- 
