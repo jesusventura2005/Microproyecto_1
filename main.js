@@ -61,7 +61,6 @@ function commentsAndLifes () {
     lives.innerHTML = "Se acabo el juego!";
   }
   for (var i = 0; i < palabra.length; i++) {
-    console.log(correctGuesses, palabra.length)
     if (correctGuesses === palabra.length) {
       lives.innerHTML = "You Win!";
       document.querySelectorAll('#letter').forEach((boton) => {
@@ -152,7 +151,6 @@ function main() {
 // Funcion para resetear el juego
 document.getElementById('reset').onclick = function() {
   letters.parentNode.removeChild(letters);
-  console.log(category.innerHTML)
   main();
 }
 
