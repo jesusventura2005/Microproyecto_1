@@ -1,6 +1,6 @@
 // Variables generales
 
-const palabras = [
+const categories = [
   ["shanghai", "tokyo", "miami", "madrid", "paris"],
   ["gato", "perro", "elefante", "tigre", "caballo"],
   ["pizza", "hamburguesa", "pasta", "ensalada", "sushi"],
@@ -10,8 +10,9 @@ const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
 let palabra = ""; // Palabra a adivinar
-let categorySelected; // Categoria de la palabra
+let categorySelected; // Categoria de la palabra seleccionada
 let contador = 6; // Contador de vidas
+let score; // Puntaje
 
 // Crea los botones del alfabeto
 function buttonLetters() {
@@ -30,10 +31,8 @@ function buttonLetters() {
 
 // Generador de palabra 
 function generarPalabra() {
-  const chosenCategory = palabras[Math.floor(Math.random() * palabras.length)];
-  const chosenWord = chosenCategory[Math.floor(Math.random() * chosenCategory.length)];
-  console.log(chosenWord);
-  palabra = chosenWord;
+  categorySelected = categories[Math.floor(Math.random() * categories.length)];
+  palabra = categorySelected[Math.floor(Math.random() * categorySelected.length)];
   document.getElementById("palabra").innerHTML = "_ ".repeat(palabra.length);
   document.getElementById("intentos").innerHTML = contador;
   mostrarImagen(contador);
@@ -41,11 +40,11 @@ function generarPalabra() {
 
 // Seleccionar categoria
 function seleccionarCategoria() {
-  if (categorySelected === palabras[0]) {
+  if (categorySelected === categories[0]) {
     category.innerHTML = "Categoria: Ciudades";
-  } else if (categorySelected === palabras[1]) {
+  } else if (categorySelected === categories[1]) {
     category.innerHTML = "Categoria: Animales";
-  } else if (categorySelected === palabras[2]) {
+  } else if (categorySelected === categories[2]) {
     category.innerHTML = "Categoria: Comida";
   }
 }
@@ -98,6 +97,7 @@ function main() {
 
 document.getElementById('reset').onclick = function() {
   letters.parentNode.removeChild(letters);
+  console.log(category.innerHTML)
   main();
 }
 
