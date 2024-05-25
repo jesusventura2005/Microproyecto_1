@@ -1,6 +1,8 @@
+// Variables generales
+
 const palabras = [
   ["shanghai", "tokyo", "miami", "madrid", "paris"],
-  ["gato", "perro", "pez", "tigre", "caballo"],
+  ["gato", "perro", "elefante", "tigre", "caballo"],
   ["pizza", "hamburguesa", "pasta", "ensalada", "sushi"],
 ]
 const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
@@ -8,7 +10,7 @@ const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
 let palabra = ""; // Palabra a adivinar
-let category; // Categoria de la palabra
+let categorySelected; // Categoria de la palabra
 let contador = 6; // Contador de vidas
 
 // Crea los botones del alfabeto
@@ -39,15 +41,16 @@ function generarPalabra() {
 
 // Seleccionar categoria
 function seleccionarCategoria() {
-  if (category === palabras[0]) {
+  if (categorySelected === palabras[0]) {
     category.innerHTML = "Categoria: Ciudades";
-  } else if (category === palabras[1]) {
+  } else if (categorySelected === palabras[1]) {
     category.innerHTML = "Categoria: Animales";
-  } else if (category === palabras[2]) {
+  } else if (categorySelected === palabras[2]) {
     category.innerHTML = "Categoria: Comida";
   }
 }
 
+// Actualizar la imagen del ahorcado
 function mostrarImagen(intentos) {
   for (let i = 0; i <= 6; i++) {
     document.getElementById(`image${i}`).style.display =
@@ -55,6 +58,7 @@ function mostrarImagen(intentos) {
   }
 }
 
+// Tomar letra cuando se clickea el boton
 function tomarLetra(letra) {
   let acierto = null;
   let vacio = "";
@@ -90,6 +94,11 @@ function main() {
       boton.disabled = true;
     });
   });
+}
+
+document.getElementById('reset').onclick = function() {
+  letters.parentNode.removeChild(letters);
+  main();
 }
 
 window.onload = main;

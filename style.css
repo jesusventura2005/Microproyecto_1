@@ -1,4 +1,4 @@
-/* Estructura principal */
+/* ESTRUCTURA PRINCIPAL */
 * {
   box-sizing: border-box;
   padding: 0;
@@ -16,6 +16,7 @@ body {
   width: 100vw;
   height: 100vh;
   flex-direction: column;
+  text-align: center;
 }
 
 h1 {
@@ -44,7 +45,7 @@ picture img {
   height: 100px;
 }
 
-/* Estilos para clases y Id's */
+/* ESTILOS PARA CLASES Y IDS */
 
 .contenedor .juego {
   display: flex;
@@ -81,6 +82,7 @@ picture img {
   color: #222;
   cursor: pointer;
   border: solid 1px #eeee;
+  border-radius: 5px;
   font-size: 1.5rem;
   transition: all 0.3s ease-in-out;
 }
@@ -91,8 +93,26 @@ picture img {
   border: solid 1px #222;
 }
 
-#alphabet button:disabled {
+#alphabet button:disabled, button:disabled:hover {
   background: #eeee;
   color: #858585;
-  cursor: auto;
+  cursor:not-allowed;
+  border: solid 1px #eee;
+}
+
+#reset {
+  padding: 1em;
+  background: white;
+  color: #222;
+  cursor: pointer;
+  border: solid 1px #eeee;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+#reset:hover {
+  background: #eeee;
+  color: #222;
+  border: solid 1px #222;
 }
