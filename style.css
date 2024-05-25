@@ -58,7 +58,7 @@ picture img {
   flex-direction: column;
 }
 
-.palabra {
+#palabra {
   color: #222;
   background-color: #fff;
   margin-bottom: 30px;

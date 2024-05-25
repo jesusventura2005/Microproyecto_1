@@ -1,5 +1,4 @@
 // Variables generales
-
 const categories = [
   ["shanghai", "tokyo", "miami", "madrid", "paris"],
   ["gato", "perro", "elefante", "tigre", "caballo"],
@@ -13,6 +12,8 @@ let palabra = ""; // Palabra a adivinar
 let categorySelected; // Categoria de la palabra seleccionada
 let contador = 6; // Contador de vidas
 let guesses; // Intentos de adivinar la palabra
+let correctGuesses // Adivinadas correctas
+let multiplier // Multiplicador de puntaje
 let score; // Puntaje
 
 // Elementos del DOM
@@ -59,6 +60,15 @@ function commentsAndLifes () {
   if (contador < 1) {
     lives.innerHTML = "Se acabo el juego!";
   }
+  for (var i = 0; i < palabra.length; i++) {
+    console.log(correctGuesses, palabra.length)
+    if (correctGuesses === palabra.length) {
+      lives.innerHTML = "You Win!";
+      document.querySelectorAll('#letter').forEach((boton) => {
+        boton.disabled = true;
+      });
+    }
+  }
 }
 
 // Mostrar puntaje del usuario en la partida
@@ -84,23 +94,29 @@ function tomarLetra(letra) {
     if (palabra[i] === letra) {
       vacio += letra + " ";
       acierto = true;
+      correctGuesses += 1;
     } else {
       vacio += palabraActual[i] + " ";
     }
   }
 
   document.getElementById("palabra").innerHTML = vacio.trim();
-
+  
+  // Si acierta el puntaje incrementa segun las vidas restantes y un multiplicador
   if (acierto) {
-    score += 10 * contador;
+    score += 10 * contador * multiplier;
+    multiplier += 1;
   }
 
+  // Si no aciertas el multiplicador se reinicia y pierdes 1 vida.
   if (!acierto) {
     contador = contador - 1;
+    multiplier = 1;
     document.getElementById("intentos").innerHTML = contador;
     mostrarImagen(contador);
   }
 
+  // Si contador llega a 0, se deshabilitan los botones del alfabeto
   if (contador === 0) {
     document.querySelectorAll('#letter').forEach((boton) => {
       boton.disabled = true;
@@ -113,7 +129,9 @@ function tomarLetra(letra) {
 // Iniciador del juego
 function main() {
   contador = 6;
-  score= 0;
+  score = 0;
+  multiplier = 1;
+  correctGuesses = 0;
 
   generarPalabra();
   buttonLetters();
