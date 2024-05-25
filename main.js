@@ -10,7 +10,7 @@ const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
 
 let palabra = ""; // Palabra a adivinar
 let categorySelected; // Categoria de la palabra seleccionada
-let contador = 6; // Contador de vidas
+let counter = 6; // Contador de vidas
 let guesses; // Intentos de adivinar la palabra
 let correctGuesses // Adivinadas correctas
 let multiplier // Multiplicador de puntaje
@@ -35,16 +35,16 @@ function buttonLetters() {
 }
 
 // Generador de palabra 
-function generarPalabra() {
+function generateWord() {
   categorySelected = categories[Math.floor(Math.random() * categories.length)];
   palabra = categorySelected[Math.floor(Math.random() * categorySelected.length)];
   document.getElementById("palabra").innerHTML = "_ ".repeat(palabra.length);
-  document.getElementById("intentos").innerHTML = contador;
-  mostrarImagen(contador);
+  document.getElementById("intentos").innerHTML = counter;
+  displayImage(counter);
 }
 
 // Seleccionar categoria
-function seleccionarCategoria() {
+function selectCategory() {
   if (categorySelected === categories[0]) {
     category.innerHTML = "Categoria: Ciudades";
   } else if (categorySelected === categories[1]) {
@@ -56,8 +56,8 @@ function seleccionarCategoria() {
 
 // Mostrar vidas
 function commentsAndLifes () {
-  lives.innerHTML = "Tienes: " + contador + " oportunidades";
-  if (contador < 1) {
+  lives.innerHTML = "Tienes: " + counter + " oportunidades";
+  if (counter < 1) {
     lives.innerHTML = "Se acabo el juego!";
   }
   for (var i = 0; i < palabra.length; i++) {
@@ -77,7 +77,7 @@ function showScore() {
 }
  
 // Actualizar la imagen del ahorcado
-function mostrarImagen(intentos) {
+function displayImage(intentos) {
   for (let i = 0; i <= 6; i++) {
     document.getElementById(`image${i}`).style.display =
       i === intentos ? "block" : "none";
@@ -85,7 +85,7 @@ function mostrarImagen(intentos) {
 }
 
 // Tomar letra cuando se clickea el boton
-function tomarLetra(letra) {
+function takeLetter(letra) {
   let acierto = null;
   let vacio = "";
   let palabraActual = document.getElementById("palabra").innerHTML.split(" ");
@@ -104,20 +104,20 @@ function tomarLetra(letra) {
   
   // Si acierta el puntaje incrementa segun las vidas restantes y un multiplicador
   if (acierto) {
-    score += 10 * contador * multiplier;
+    score += 10 * counter * multiplier;
     multiplier += 1;
   }
 
   // Si no aciertas el multiplicador se reinicia y pierdes 1 vida.
   if (!acierto) {
-    contador = contador - 1;
+    counter = counter - 1;
     multiplier = 1;
-    document.getElementById("intentos").innerHTML = contador;
-    mostrarImagen(contador);
+    document.getElementById("intentos").innerHTML = counter;
+    displayImage(counter);
   }
 
   // Si contador llega a 0, se deshabilitan los botones del alfabeto
-  if (contador === 0) {
+  if (counter === 0) {
     document.querySelectorAll('#letter').forEach((boton) => {
       boton.disabled = true;
     }
@@ -128,20 +128,20 @@ function tomarLetra(letra) {
 
 // Iniciador del juego
 function main() {
-  contador = 6;
+  counter = 6;
   score = 0;
   multiplier = 1;
   correctGuesses = 0;
 
-  generarPalabra();
+  generateWord();
   buttonLetters();
   showScore();
-  seleccionarCategoria();
+  selectCategory();
   commentsAndLifes();
   document.querySelectorAll("#letter").forEach((boton) => {
     boton.disabled = false;
     boton.addEventListener("click", (e) => {
-      tomarLetra(e.target.innerHTML);
+      takeLetter(e.target.innerHTML);
       boton.disabled = true;
       commentsAndLifes();
       showScore()
