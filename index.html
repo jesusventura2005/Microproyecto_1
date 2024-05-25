@@ -5,14 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ahorcado Juego</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="contenedor">
 
-
-    <div class="contenedor_h1">
     <h1>Ahorcado</h1>
-   </div>
+    <h2>By: Elias Fung & Jesus Ventura</h2>
+
     <div class="juego">
       <picture>
         <img src="img/ahorcado_6.png" alt="" id="image6">
@@ -27,34 +29,10 @@
       <h3>Intentos restantes: <span id="intentos"></span></h3>
       <h2 class="palabra" id="palabra"></h2>
 
-      <div class="letras">
-        <button class="letra" onclick="tomar_letra('a')">a</button>
-        <button class="letra" onclick="tomar_letra('b')">b</button>
-        <button class="letra" onclick="tomar_letra('c')">c</button>
-        <button class="letra" onclick="tomar_letra('d')">d</button>
-        <button class="letra" onclick="tomar_letra('e')">e</button>
-        <button class="letra" onclick="tomar_letra('f')">f</button>
-        <button class="letra" onclick="tomar_letra('g')">g</button>
-        <button class="letra" onclick="tomar_letra('h')">h</button>
-        <button class="letra" onclick="tomar_letra('i')">i</button>
-        <button class="letra" onclick="tomar_letra('j')">j</button>
-        <button class="letra" onclick="tomar_letra('k')">k</button>
-        <button class="letra" onclick="tomar_letra('l')">l</button>
-        <button class="letra" onclick="tomar_letra('m')">m</button>
-        <button class="letra" onclick="tomar_letra('n')">n</button>
-        <button class="letra" onclick="tomar_letra('ñ')">ñ</button>
-        <button class="letra" onclick="tomar_letra('o')">o</button>
-        <button class="letra" onclick="tomar_letra('p')">p</button>
-        <button class="letra" onclick="tomar_letra('q')">q</button>
-        <button class="letra" onclick="tomar_letra('r')">r</button>
-        <button class="letra" onclick="tomar_letra('s')">s</button>
-        <button class="letra" onclick="tomar_letra('t')">t</button>
-        <button class="letra" onclick="tomar_letra('u')">u</button>
-        <button class="letra" onclick="tomar_letra('v')">v</button>
-        <button class="letra" onclick="tomar_letra('w')">w</button>
-        <button class="letra" onclick="tomar_letra('x')">x</button>
-        <button class="letra" onclick="tomar_letra('y')">y</button>
-        <button class="letra" onclick="tomar_letra('z')">z</button>
+      <div id="letterButtons">
+      </div>
+
+      <div id="scoreboard">
       </div>
 
     </div>

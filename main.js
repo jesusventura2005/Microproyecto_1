@@ -1,7 +1,25 @@
 const palabras = ["hoja", "caballo", "calamar", "hombre"];
+const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+'t', 'u', 'v', 'w', 'x', 'y', 'z'];
 
 let palabra = "";
 let contador = 6;
+
+  // Crea los botones del alfabeto
+  function buttonLetters() {
+    letterButtons = document.getElementById("letterButtons");
+    letters = document.createElement("div");
+
+    for (var i = 0; i < alphabet.length; i++) {
+      letters.id = "alphabet";
+      list = document.createElement("button");
+      list.id = "letter";
+      list.innerHTML = alphabet[i];
+      letterButtons.appendChild(letters);
+      letters.appendChild(list);
+    }
+  }
 
 function generar_palabra() {
   const rand = palabras[Math.floor(Math.random() * palabras.length)];
@@ -20,7 +38,7 @@ function mostrar_imagen(intentos) {
 }
 
 function tomar_letra(letra) {
-  let acierto = false;
+  let acierto = null;
   let vacio = "";
   let palabraActual = document.getElementById("palabra").innerHTML.split(" "); 
 
@@ -36,20 +54,18 @@ function tomar_letra(letra) {
   document.getElementById("palabra").innerHTML = vacio.trim(); 
 
   if (!acierto) {
-    contador = contador - 0.5;
+    contador = contador - 1;
     document.getElementById("intentos").innerHTML = contador;
     mostrar_imagen(contador);
   }
-
-
-
   
 }
 
 function main() {
   contador = 6; 
   generar_palabra();
-  document.querySelectorAll(".letra").forEach((boton) => {
+  buttonLetters();
+  document.querySelectorAll("#letter").forEach((boton) => {
     boton.disabled = false; 
     boton.addEventListener("click", (e) => {
       tomar_letra(e.target.innerHTML);
