@@ -1,11 +1,15 @@
 /* Estructura principal */
 * {
   box-sizing: border-box;
-  background-color: #eeee;
   padding: 0;
   margin: 0;
   font-family: "Montserrat";
 }
+
+body {
+  background-color: #eeee;
+}
+
 .contenedor {
   display: flex;
   align-items: center;
@@ -21,23 +25,20 @@ h1 {
   padding: 5px;
 }
 
+h2 {
+  text-align: center;
+}
+
 h3 {
   background-color: #fff;
   margin-bottom: 20px;
 }
 
-span {
+span, picture {
   background-color: #fff;
 }
 
-picture {
-  background-color: #fff;
-}
 picture img {
-  position: fixed;
-  left: 46%;
-  top: 30%;
-  margin-bottom: 70px;
   background-color: #fff;
   width: 100px;
   height: 100px;
@@ -47,10 +48,9 @@ picture img {
 
 .contenedor .juego {
   display: flex;
-  margin-top: 80px;
+  margin: 80px 20px 0 20px;
+  padding: 1.5em;
   background-color: #fff;
-  height: 70%;
-  width: 70%;
   border-radius: 15px;
   justify-content: center;
   align-items: center;
@@ -59,32 +59,40 @@ picture img {
 
 .palabra {
   color: #222;
+  background-color: #fff;
+  margin-bottom: 30px;
 }
+
+/* Seccion de los botones del alfabeto */
 
 #alphabet {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   margin: 15px auto;
-  padding: 0;
+  padding: 10px;
   max-width: 900px;
 }
 
 #alphabet button {
-  float: left;
-  margin: 0 10px 10px 0;
   list-style: none;
-  width: 35px;
-  height: 30px;
-  padding-top: 10px;
+  padding: 10px;
   background: white;
   color: #222;
   cursor: pointer;
-  border: solid 1px white;
+  border: solid 1px #eeee;
   font-size: 1.5rem;
+  transition: all 0.3s ease-in-out;
 }
 
-.palabra {
-  background-color: #fff;
-  margin-bottom: 30px;
+#alphabet button:hover {
+  background: #eeee;
+  color: #222;
+  border: solid 1px #222;
+}
+
+#alphabet button:disabled {
+  background: #eeee;
+  color: #858585;
+  cursor: auto;
 }

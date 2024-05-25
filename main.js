@@ -1,10 +1,15 @@
-const palabras = ["hoja", "caballo", "calamar", "hombre"];
+const palabras = [
+  ["shanghai", "tokyo", "miami", "madrid", "paris"],
+  ["gato", "perro", "pez", "tigre", "caballo"],
+  ["pizza", "hamburguesa", "pasta", "ensalada", "sushi"],
+]
 const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
-let palabra = "";
-let contador = 6;
+let palabra = ""; // Palabra a adivinar
+let category; // Categoria de la palabra
+let contador = 6; // Contador de vidas
 
 // Crea los botones del alfabeto
 function buttonLetters() {
@@ -21,23 +26,36 @@ function buttonLetters() {
   }
 }
 
-function generar_palabra() {
-  const rand = palabras[Math.floor(Math.random() * palabras.length)];
-  palabra = rand;
-  console.log(palabra);
+// Generador de palabra 
+function generarPalabra() {
+  const chosenCategory = palabras[Math.floor(Math.random() * palabras.length)];
+  const chosenWord = chosenCategory[Math.floor(Math.random() * chosenCategory.length)];
+  console.log(chosenWord);
+  palabra = chosenWord;
   document.getElementById("palabra").innerHTML = "_ ".repeat(palabra.length);
   document.getElementById("intentos").innerHTML = contador;
-  mostrar_imagen(contador);
+  mostrarImagen(contador);
 }
 
-function mostrar_imagen(intentos) {
+// Seleccionar categoria
+function seleccionarCategoria() {
+  if (category === palabras[0]) {
+    category.innerHTML = "Categoria: Ciudades";
+  } else if (category === palabras[1]) {
+    category.innerHTML = "Categoria: Animales";
+  } else if (category === palabras[2]) {
+    category.innerHTML = "Categoria: Comida";
+  }
+}
+
+function mostrarImagen(intentos) {
   for (let i = 0; i <= 6; i++) {
     document.getElementById(`image${i}`).style.display =
       i === intentos ? "block" : "none";
   }
 }
 
-function tomar_letra(letra) {
+function tomarLetra(letra) {
   let acierto = null;
   let vacio = "";
   let palabraActual = document.getElementById("palabra").innerHTML.split(" ");
@@ -56,18 +74,19 @@ function tomar_letra(letra) {
   if (!acierto) {
     contador = contador - 1;
     document.getElementById("intentos").innerHTML = contador;
-    mostrar_imagen(contador);
+    mostrarImagen(contador);
   }
 }
 
 function main() {
   contador = 6;
-  generar_palabra();
+  generarPalabra();
   buttonLetters();
+  seleccionarCategoria();
   document.querySelectorAll("#letter").forEach((boton) => {
     boton.disabled = false;
     boton.addEventListener("click", (e) => {
-      tomar_letra(e.target.innerHTML);
+      tomarLetra(e.target.innerHTML);
       boton.disabled = true;
     });
   });
