@@ -12,7 +12,11 @@ const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
 let palabra = ""; // Palabra a adivinar
 let categorySelected; // Categoria de la palabra seleccionada
 let contador = 6; // Contador de vidas
+let guesses; // Intentos de adivinar la palabra
 let score; // Puntaje
+
+// Elementos del DOM
+let lives = document.getElementById("intentos");
 
 // Crea los botones del alfabeto
 function buttonLetters() {
@@ -49,6 +53,19 @@ function seleccionarCategoria() {
   }
 }
 
+// Mostrar vidas
+function commentsAndLifes () {
+  lives.innerHTML = "Tienes: " + contador + " oportunidades";
+  if (contador < 1) {
+    lives.innerHTML = "Se acabo el juego!";
+  }
+}
+
+// Mostrar puntaje del usuario en la partida
+function showScore() {
+  document.getElementById("score").innerHTML = "Puntaje: " + score;
+}
+ 
 // Actualizar la imagen del ahorcado
 function mostrarImagen(intentos) {
   for (let i = 0; i <= 6; i++) {
@@ -66,7 +83,6 @@ function tomarLetra(letra) {
   for (let i = 0; i < palabra.length; i++) {
     if (palabra[i] === letra) {
       vacio += letra + " ";
-      score += 10 * contador;
       acierto = true;
     } else {
       vacio += palabraActual[i] + " ";
@@ -75,23 +91,42 @@ function tomarLetra(letra) {
 
   document.getElementById("palabra").innerHTML = vacio.trim();
 
+  if (acierto) {
+    score += 10 * contador;
+  }
+
   if (!acierto) {
     contador = contador - 1;
     document.getElementById("intentos").innerHTML = contador;
     mostrarImagen(contador);
   }
+
+  if (contador === 0) {
+    document.querySelectorAll('#letter').forEach((boton) => {
+      boton.disabled = true;
+    }
+    );
+  }
 }
 
+
+// Iniciador del juego
 function main() {
   contador = 6;
+  score= 0;
+
   generarPalabra();
   buttonLetters();
+  showScore();
   seleccionarCategoria();
+  commentsAndLifes();
   document.querySelectorAll("#letter").forEach((boton) => {
     boton.disabled = false;
     boton.addEventListener("click", (e) => {
       tomarLetra(e.target.innerHTML);
       boton.disabled = true;
+      commentsAndLifes();
+      showScore()
     });
   });
 }
