@@ -66,6 +66,7 @@ function tomarLetra(letra) {
   for (let i = 0; i < palabra.length; i++) {
     if (palabra[i] === letra) {
       vacio += letra + " ";
+      score += 10 * contador;
       acierto = true;
     } else {
       vacio += palabraActual[i] + " ";
@@ -95,6 +96,7 @@ function main() {
   });
 }
 
+// Funcion para resetear el juego
 document.getElementById('reset').onclick = function() {
   letters.parentNode.removeChild(letters);
   console.log(category.innerHTML)
