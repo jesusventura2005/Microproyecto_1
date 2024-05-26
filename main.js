@@ -15,11 +15,11 @@ let guesses; // Intentos de adivinar la palabra
 let correctGuesses // Adivinadas correctas
 let multiplier // Multiplicador de puntaje
 let score; // Puntaje
+let scoreRecords = []; // Historial de Puntajes
 
 // Elementos del DOM
 let lives = document.getElementById("intentos");
 let table = document.querySelector('table');
-
 
 // Precargar Data del LocalStorage
 let data = JSON.parse(localStorage.getItem('scoreRecords'));
@@ -37,7 +37,6 @@ function createTable() {
     table.appendChild(row)
   });
 }
-
 
 // Ordenar la tabla de puntajes
 function sortTable() {
@@ -73,7 +72,6 @@ function addRow() {
 
 // Iniciador de la tabla
 createTable()
-
 
 // Crea los botones del alfabeto
 function buttonLetters() {
@@ -116,13 +114,16 @@ function commentsAndLifes () {
   if (counter < 1) {
     lives.innerHTML = "Se acabo el juego!";
   }
-  for (var i = 0; i < palabra.length; i++) {
-    if (correctGuesses === palabra.length) {
-      lives.innerHTML = "You Win!";
-      document.querySelectorAll('#letter').forEach((boton) => {
-        boton.disabled = true;
-      });
-    }
+  if (correctGuesses === palabra.length) {
+    lives.innerHTML = "You Win!";
+    document.querySelectorAll('#letter').forEach((boton) => {
+      boton.disabled = true;
+    });
+  }
+  if (counter < 1 || correctGuesses === palabra.length) {
+    scoreRecords.push(score);
+    localStorage.setItem('scoreRecords', JSON.stringify(scoreRecords));
+    addRow();
   }
 }
 
