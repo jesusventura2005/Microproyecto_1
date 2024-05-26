@@ -14,6 +14,7 @@ body {
   display: flex;
   align-items: center;
   width: 100vw;
+  max-width: 100%;
   height: 100vh;
   flex-direction: column;
   text-align: center;
@@ -56,6 +57,28 @@ picture img {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.sections {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.leftSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #eeee;
+}
+
+#scoreboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 20px;
+  max-height: 100%;
 }
 
 #palabra {
@@ -108,11 +131,12 @@ picture img {
 /* Reset Boton */
 
 #reset {
+  margin-top: 20px;
   padding: 1em;
-  background: white;
+  background: #eeee;
   color: #222;
   cursor: pointer;
-  border: solid 1px #eeee;
+  border: solid 1px black;
   border-radius: 5px;
   font-size: 1.5rem;
   transition: all 0.3s ease-in-out;
@@ -122,4 +146,50 @@ picture img {
   background: #eeee;
   color: #222;
   border: solid 1px #222;
+}
+
+/* Estilos para la tabla */
+
+table {
+	border-collapse: collapse;
+  font-family: Tahoma, Geneva, sans-serif;
+}
+table td {
+	padding: 15px;
+}
+table tbody tr {
+	background-color: #54585d;
+	color: #222;
+	font-weight: bold;
+	font-size: 1.5rem;
+}
+table tbody td {
+	color: #636363;
+	border: 1px solid #dddfe1;
+}
+table tbody tr {
+	background-color: #f9fafb;
+}
+table tbody tr:nth-child(odd) {
+	background-color: #ffffff;
+}
+
+/* Media queries */
+
+@media screen and (max-width: 768px){
+  .sections {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .leftSection {
+    border-right: none;
+    border-bottom: 1px solid #eeee;
+    padding-bottom: 20px;
+  }
+
+  #scoreboard {
+    margin: 20px 0 0 0;
+  }
 }

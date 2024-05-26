@@ -18,6 +18,62 @@ let score; // Puntaje
 
 // Elementos del DOM
 let lives = document.getElementById("intentos");
+let table = document.querySelector('table');
+
+
+// Precargar Data del LocalStorage
+let data = JSON.parse(localStorage.getItem('scoreRecords'));
+if (data) {
+  scoreRecords = data;
+  scoreRecords.sort((a, b) => b - a);
+}
+
+// Manejador de la tabla de puntajes
+function createTable() {
+  scoreRecords.forEach((record) => {
+    let row = document.createElement('tr')
+    let cell = row.insertCell();
+    cell.innerHTML = record;
+    table.appendChild(row)
+  });
+}
+
+
+// Ordenar la tabla de puntajes
+function sortTable() {
+  var rows, switching, i, x, y, shouldSwitch;
+  switching = true;
+  while (switching) {
+    switching = false;
+    rows = table.rows;
+    for (i = 1; i < (rows.length - 1); i++) {
+      shouldSwitch = false;
+      x = rows[i].getElementsByTagName("tr")[0];
+      y = rows[i + 1].getElementsByTagName("tr")[0];
+      if (Number(x.innerHTML) > Number(y.innerHTML)) {
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+
+// Agregar fila a la tabla de puntajes
+function addRow() {
+  let row = document.createElement('tr')
+  let cell = row.insertCell();
+  cell.innerHTML = score;
+  table.appendChild(row)
+  sortTable()
+}
+
+// Iniciador de la tabla
+createTable()
+
 
 // Crea los botones del alfabeto
 function buttonLetters() {
